@@ -14,12 +14,14 @@ export const Info = () => {
   return (
     <div className="flex items-center gap-x-4">
       <div className="w-[60px] h-[60px] relative">
-        <Image
-          src={organization?.imageUrl!}
-          alt="organization"
-          className="rounded-md object-cover"
-          fill
-        />
+        {organization?.imageUrl && (
+          <Image
+            src={organization?.imageUrl!}
+            alt="organization"
+            className="rounded-md object-cover"
+            fill
+          />
+        )}
       </div>
       <div className="space-y-1">
         <p className="font-semibold text-xl">{organization?.name}</p>
