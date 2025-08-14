@@ -22,11 +22,12 @@ export const Header = ({ data }: HeaderProps) => {
   const inputRef = useRef<ElementRef<"input">>(null);
 
   const { execute } = useAction(updateCard, {
-    onSuccess: () => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
-        queryKey: ["cards", params.listId],
+        queryKey: ["cards", data.id],
       });
       toast.success("Card updated successfully");
+      setTitle(data.title);
     },
     onError: error => {
       toast.error(error);

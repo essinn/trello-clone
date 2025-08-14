@@ -12,6 +12,7 @@ export const updateCardSchema = z.object({
     })
     .min(3, {
       message: "Title is too short",
-    }),
+    })
+    .optional(),
   id: z.string(),
 });
