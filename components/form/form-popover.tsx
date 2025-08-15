@@ -15,6 +15,7 @@ import { createBoard } from "@/lib/actions/create-board";
 import { toast } from "sonner";
 import { FormPicker } from "./form-picker";
 import { useRouter } from "next/navigation";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -29,6 +30,7 @@ export const FormPopover = ({
   align,
   sideOffset = 0,
 }: FormPopoverProps) => {
+  const proModal = useProModal();
   const router = useRouter();
   const closeRef = useRef<ElementRef<"button">>(null);
 
@@ -40,6 +42,7 @@ export const FormPopover = ({
     },
     onError: error => {
       toast.error(error);
+      proModal.onOpen("defaultId");
     },
   });
 
